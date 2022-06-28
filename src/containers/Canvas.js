@@ -2,7 +2,7 @@ import React, { useMemo, useRef, useState, useEffect } from "react";
 import PolygonAnnotation from "components/PolygonAnnotation";
 import { Stage, Layer, Image } from "react-konva";
 import Button from "components/Button";
-const videoSource = "./space_landscape.jpg";
+const picSource = "./space_landscape.jpg";
 const wrapperStyle = {
   display: "flex",
   justifyContent: "center",
@@ -27,28 +27,28 @@ const Canvas = () => {
   const [position, setPosition] = useState([0, 0]);
   const [isMouseOverPoint, setMouseOverPoint] = useState(false);
   const [isPolyComplete, setPolyComplete] = useState(false);
-  const videoElement = useMemo(() => {
+  const picElement = useMemo(() => {
     const element = new window.Image();
     element.width = 650;
     element.height = 302;
-    element.src = videoSource;
+    element.src = picSource;
     return element;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [videoSource]); //it may come from redux so it may be dependency that's why I left it as dependecny...
+  }, [picSource]); //it may come from redux so it may be dependency that's why I left it as dependecny...
   useEffect(() => {
     const onload = function () {
       setSize({
-        width: videoElement.width,
-        height: videoElement.height,
+        width: picElement.width,
+        height: picElement.height,
       });
-      setImage(videoElement);
-      imageRef.current = videoElement;
+      setImage(picElement);
+      imageRef.current = picElement;
     };
-    videoElement.addEventListener("load", onload);
+    picElement.addEventListener("load", onload);
     return () => {
-      videoElement.removeEventListener("load", onload);
+      picElement.removeEventListener("load", onload);
     };
-  }, [videoElement]);
+  }, [picElement]);
   const getMousePos = (stage) => {
     return [stage.getPointerPosition().x, stage.getPointerPosition().y];
   };
@@ -61,6 +61,7 @@ const Canvas = () => {
       setPolyComplete(true);
     } else {
       setPoints([...points, mousePos]);
+      console.log(mousePos);
     }
   };
   const handleMouseMove = (e) => {
@@ -91,6 +92,7 @@ const Canvas = () => {
   useEffect(() => {
     setFlattenedPoints(
       points
+        //TODO whats is this []
         .concat(isPolyComplete ? [] : position)
         .reduce((a, b) => a.concat(b), [])
     );

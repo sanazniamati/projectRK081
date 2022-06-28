@@ -1,7 +1,8 @@
 {
-  "name": "kanva-draggable-polygon",
-  "version": "0.1.0",
+  "name": "projectrk081",
+  "version": "0.1.1",
   "private": true,
+  "description": "konva-draggable-polygon",
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",

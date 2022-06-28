@@ -51,7 +51,7 @@ const PolygonAnnotation = (props) => {
     <Group
       name="polygon"
       draggable={isFinished}
-      onDragStart={handleGroupDragStart}
+      // onDragStart={handleGroupDragStart}
       onDragEnd={handleGroupDragEnd}
       dragBoundFunc={groupDragBound}
       onMouseOver={handleGroupMouseOver}
@@ -81,7 +81,7 @@ const PolygonAnnotation = (props) => {
             x={x}
             y={y}
             radius={vertexRadius}
-            fill="#FF019A"
+            fill="blue"
             stroke="#00F1FF"
             strokeWidth={2}
             draggable
