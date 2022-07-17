@@ -38,7 +38,10 @@ const PolygonAnnotation = (props) => {
     setMinMaxY(minMax(arrY));
   };
   const groupDragBound = (pos) => {
+    console.log("minMaxX[0]" + minMaxX[0]);
+    console.log("minMaxY[0]" + minMaxY[0]);
     let { x, y } = pos;
+    console.log(x);
     const sw = stage.width();
     const sh = stage.height();
     if (minMaxY[0] + y < 0) y = -1 * minMaxY[0];
@@ -51,7 +54,7 @@ const PolygonAnnotation = (props) => {
     <Group
       name="polygon"
       draggable={isFinished}
-      // onDragStart={handleGroupDragStart}
+      onDragStart={handleGroupDragStart}
       onDragEnd={handleGroupDragEnd}
       dragBoundFunc={groupDragBound}
       onMouseOver={handleGroupMouseOver}

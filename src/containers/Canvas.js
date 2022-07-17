@@ -61,7 +61,6 @@ const Canvas = () => {
       setPolyComplete(true);
     } else {
       setPoints([...points, mousePos]);
-      console.log(mousePos);
     }
   };
   const handleMouseMove = (e) => {
